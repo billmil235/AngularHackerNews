@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div class="row">
+        <h1>Newest Stories</h1>
+    </div>
+    
+    <div *ngIf="storiesService.storyList.length">
+        <div *ngFor='let story of storiesService.storyList'>
+            <div *ngIf="story" class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{story.title}} <span class="badge badge-primary" alt="Score">{{story.score}}</span></h5>
+                </div>
+                <div class="card-body">
+                    <h6 *ngIf="story.text">{{ story.text }}</h6>
+                    <span>Posted By: {{story.by}} at {{ storiesService.getFormattedTime(story.time) }}</span>
+                    <br />
+                    <a href="{{story.url}}" target="_blank">Read Story</a>
+                </div>
+            </div>
+        </div>
+    </div>   
+
+</div>
