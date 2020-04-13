@@ -14,6 +14,7 @@ export class StoriesService {
   constructor(private http: HttpClient) { }
 
   storyList: Array<Story> = []
+  loading: boolean = false;
 
   /**
    * Gets the latest stories that match the search criteria.
@@ -24,6 +25,7 @@ export class StoriesService {
     console.log("Getting stories.");
     
     this.storyList = Array<Story>();
+    this.loading = true;
 
     const idPromise = this.getStoryIds().toPromise();
 
@@ -40,6 +42,8 @@ export class StoriesService {
         }
       })
 
+      this.loading = false;
+      
     });
 
   }

@@ -4,6 +4,8 @@
         <h1>Newest Stories</h1>
     </div>
     
+    <div *ngIf="storiesService.loading" class="col-12 text-primary disabled" id="spinner"><span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>Loading...</div>
+
     <div *ngIf="storiesService.storyList.length">
         <div *ngFor='let story of storiesService.storyList'>
             <div *ngIf="story" class="card">
